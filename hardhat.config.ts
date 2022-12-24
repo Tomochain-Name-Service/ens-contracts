@@ -71,6 +71,11 @@ const config: HardhatUserConfig = {
       chainId: 1,
       accounts: real_accounts,
     },
+    tomoTest: {
+      url: 'https://rpc.testnet.tomochain.com',
+      chainId: 89,
+      accounts: real_accounts
+    }
   },
   mocha: {},
   solidity: {
