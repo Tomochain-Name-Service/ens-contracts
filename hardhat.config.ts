@@ -37,57 +37,27 @@ export const archivedDeploymentPath = './deployments/archive'
 
 const config: HardhatUserConfig = {
   networks: {
-    hardhat: {
-      saveDeployments: false,
-      tags: ['test', 'legacy', 'use_root'],
-      allowUnlimitedContractSize: false,
-    },
-    localhost: {
-      url: 'http://127.0.0.1:8545',
-      saveDeployments: false,
-      tags: ['test', 'legacy', 'use_root'],
-    },
-    rinkeby: {
-      url: `https://rinkeby.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      tags: ['test', 'legacy', 'use_root'],
-      chainId: 4,
-      accounts: real_accounts,
-    },
-    ropsten: {
-      url: `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      tags: ['test', 'legacy', 'use_root'],
-      chainId: 3,
-      accounts: real_accounts,
-    },
-    goerli: {
-      url: `https://goerli.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      tags: ['test', 'legacy', 'use_root'],
-      chainId: 5,
-      accounts: real_accounts,
-    },
     mainnet: {
-      url: `https://mainnet.infura.io/v3/${process.env.INFURA_API_KEY}`,
-      tags: ['legacy', 'use_root'],
-      chainId: 1,
+      url: 'https://rpc.tomochain.com',
+      tags: ['use_root'],
+      chainId: 88,
       accounts: real_accounts,
     },
-    tomoTest: {
+    testnet: {
       url: 'https://rpc.testnet.tomochain.com',
+      tags: ['test','use_root'],
       chainId: 89,
-      accounts: real_accounts
+      accounts: real_accounts,
+      gasPrice: 10000000000,
+      gas: 5000000,
+      loggingEnabled:true
     }
   },
   mocha: {},
   solidity: {
     compilers: [
       {
-        version: '0.8.17',
-        settings: {
-          optimizer: {
-            enabled: true,
-            runs: 2500,
-          },
-        },
+        version: '0.8.12'
       },
     ],
   },

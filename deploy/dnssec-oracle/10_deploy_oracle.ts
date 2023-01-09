@@ -95,21 +95,27 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   for (const [id, alg] of Object.entries(algorithms)) {
     const address = (await deployments.get(alg)).address
     if (address != (await dnssec.algorithms(id))) {
-      transactions.push(await dnssec.setAlgorithm(id, address))
+      const trx = await dnssec.setAlgorithm(id, address)
+      await trx.wait()
+      console.log(`--- setAlgorithm ---Transaction with nounce ${trx.nonce} done!`);
+      
+      
     }
   }
 
   for (const [id, digest] of Object.entries(digests)) {
     const address = (await deployments.get(digest)).address
     if (address != (await dnssec.digests(id))) {
-      transactions.push(await dnssec.setDigest(id, address))
+      const trx = await dnssec.setDigest(id, address)
+      await trx.wait()
+      console.log(`--- setDigest ---Transaction with nounce ${trx.nonce} done!`);
     }
   }
 
   console.log(
     `Waiting on ${transactions.length} transactions setting DNSSEC parameters`,
   )
-  await Promise.all(transactions.map((tx) => tx.wait()))
+  //await Promise.all(transactions.map((tx) => tx.wait()))
 }
 
 func.tags = ['dnssec-oracle']

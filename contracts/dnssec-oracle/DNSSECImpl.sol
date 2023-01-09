@@ -8,7 +8,7 @@ import "./RRUtils.sol";
 import "./DNSSEC.sol";
 import "./algorithms/Algorithm.sol";
 import "./digests/Digest.sol";
-import "@ensdomains/buffer/contracts/Buffer.sol";
+import "@tomochain-name-service/buffer/contracts/Buffer.sol";
 
 /*
  * @dev An oracle contract that verifies and stores DNSSEC-validated DNS records.

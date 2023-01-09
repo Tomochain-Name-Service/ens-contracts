@@ -1,7 +1,7 @@
 pragma solidity ^0.8.4;
 
 import "./BytesUtils.sol";
-import "@ensdomains/buffer/contracts/Buffer.sol";
+import "@tomochain-name-service/buffer/contracts/Buffer.sol";
 
 /**
  * @dev RRUtils is a library that provides utilities for parsing DNS resource records.

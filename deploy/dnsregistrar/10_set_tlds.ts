@@ -3,7 +3,8 @@ import { DeployFunction } from 'hardhat-deploy/types'
 import { HardhatRuntimeEnvironment } from 'hardhat/types'
 
 const tld_map = {
-  mainnet: ['xyz'],
+  mainnet: ['tomo'],
+  testnet: ['tomo'],
   ropsten: ['xyz'],
   localhost: ['xyz'],
   goerli: [
@@ -1219,6 +1220,7 @@ const tld_map = {
     'market',
     'netbank',
   ],
+
 }
 
 const ZERO_HASH =
